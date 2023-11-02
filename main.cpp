@@ -8,7 +8,7 @@
 /*Include
 Polymorphism: Same class threate differntly ?
 
-Encapsulation:Setter getter ?
+Encapsulation:Setter getter  yes, used in setting player name?
 
 Inheritance: Maybe pokemon evolution ? or type then inherit.
 
@@ -39,7 +39,15 @@ public:
     void CapturedPokemon(const Pokemon& newPokemon){
 
     }
+
+     void SetPlayerName(const std::string& playerName) {
+        // You can add validation or processing here if needed
+        name = playerName;
+    }
+
 };
+
+
 
 class Location{
 public:
@@ -75,7 +83,9 @@ class Game{
 
 public:
     void Start(){
-        ContinueConversation("Hello There! \nIt is nice to meet you");
+        Player player;
+
+        ContinueConversation("Hello There! \nIt is nice to meet you\nPress any button to conitnue the conversation.");
         
         ContinueConversation("Welcome to the world of Pokemon!");
       
@@ -85,6 +95,15 @@ public:
 
         ContinueConversation("I would assume you have try out pokemon game before.");
 
+        ContinueConversation("Why dont you tell me a little about youreslf");
+
+        std::cout<<"\nWhat is your name ?"<<std::endl;
+        std::cout << "Enter your name: ";
+        std::string playerName;
+        std::cin >> playerName;
+        player.SetPlayerName(playerName);
+
+        ContinueConversation("Nice to me you "+player.name+" !");
 
 
     }
